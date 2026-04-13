@@ -54,27 +54,73 @@ const AddItemPage = () => {
           </div>
           {!hasPhoto ? (
             <>
-              <div className="flex-1 mx-5 rounded-2xl bg-foreground/5 flex flex-col items-center justify-center gap-4">
+              <div className="flex-1 mx-5 rounded-2xl bg-foreground/5 flex flex-col items-center justify-center gap-4 px-6">
                 <div className="w-20 h-20 rounded-full bg-card flex items-center justify-center">
                   <Camera size={32} strokeWidth={1.5} className="text-muted-foreground" />
                 </div>
-                <p className="text-muted-foreground text-sm">Take a photo of your item</p>
+                <p className="text-muted-foreground text-sm text-center">Add a photo of your item</p>
               </div>
-              <div className="px-5 py-6 flex items-center justify-center gap-8">
-                <button onClick={() => setHasPhoto(true)} className="w-10 h-10 rounded-lg bg-card flex items-center justify-center"><Image size={18} strokeWidth={1.5} /></button>
-                <button onClick={() => setHasPhoto(true)} className="w-16 h-16 rounded-full border-4 border-primary flex items-center justify-center">
-                  <div className="w-12 h-12 rounded-full bg-primary" />
-                </button>
-                <div className="w-10" />
+
+              <div className="px-5 py-6 space-y-3">
+                {/* Primary actions */}
+                <div className="flex items-center justify-center gap-6">
+                  <button onClick={() => { setPhotoSource('gallery'); setHasPhoto(true); }} className="flex flex-col items-center gap-1.5">
+                    <div className="w-12 h-12 rounded-xl bg-card border border-border flex items-center justify-center">
+                      <Image size={18} strokeWidth={1.5} className="text-muted-foreground" />
+                    </div>
+                    <span className="text-[10px] font-body text-muted-foreground">Gallery</span>
+                  </button>
+                  <button onClick={() => { setPhotoSource('camera'); setHasPhoto(true); }} className="flex flex-col items-center gap-1.5">
+                    <div className="w-16 h-16 rounded-full border-4 border-primary flex items-center justify-center">
+                      <div className="w-12 h-12 rounded-full bg-primary" />
+                    </div>
+                    <span className="text-[10px] font-body text-muted-foreground">Camera</span>
+                  </button>
+                  <button onClick={() => { setPhotoSource('screenshot'); setHasPhoto(true); }} className="flex flex-col items-center gap-1.5">
+                    <div className="w-12 h-12 rounded-xl bg-card border border-border flex items-center justify-center">
+                      <Clipboard size={18} strokeWidth={1.5} className="text-muted-foreground" />
+                    </div>
+                    <span className="text-[10px] font-body text-muted-foreground">Screenshot</span>
+                  </button>
+                </div>
+
+                {/* URL paste option */}
+                <div className="flex items-center gap-2">
+                  <div className="flex-1 h-px bg-border" />
+                  <span className="text-[10px] font-body text-muted-foreground uppercase tracking-wider">or</span>
+                  <div className="flex-1 h-px bg-border" />
+                </div>
+                <div className="relative">
+                  <Link size={14} strokeWidth={1.5} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-muted-foreground" />
+                  <input
+                    value={imageUrl}
+                    onChange={e => setImageUrl(e.target.value)}
+                    className="w-full pl-10 pr-20 py-3 rounded-xl bg-card border border-border text-sm font-body focus:outline-none focus:ring-1 focus:ring-primary"
+                    placeholder="Paste image URL..."
+                  />
+                  {imageUrl && (
+                    <button
+                      onClick={() => { setPhotoSource('url'); setHasPhoto(true); }}
+                      className="absolute right-2 top-1/2 -translate-y-1/2 px-3 py-1.5 rounded-lg bg-primary text-primary-foreground text-xs font-body font-medium"
+                    >
+                      Use
+                    </button>
+                  )}
+                </div>
               </div>
             </>
           ) : (
             <>
-              <div className="flex-1 mx-5 rounded-2xl flex items-center justify-center" style={{ backgroundColor: photoColor }}>
-                <span className="label-caps opacity-40">Photo Preview</span>
+              <div className="flex-1 mx-5 rounded-2xl flex flex-col items-center justify-center overflow-hidden" style={{ backgroundColor: photoColor }}>
+                <span className="label-caps opacity-40">
+                  {photoSource === 'screenshot' ? 'Screenshot Preview' : photoSource === 'url' ? 'Web Image Preview' : 'Photo Preview'}
+                </span>
+                {photoSource && (
+                  <span className="mt-2 px-2.5 py-1 rounded-full bg-background/60 text-[10px] font-body text-foreground/60 capitalize">{photoSource === 'url' ? 'From URL' : `From ${photoSource}`}</span>
+                )}
               </div>
               <div className="px-5 py-6 flex gap-3">
-                <button onClick={() => setHasPhoto(false)} className="flex-1 py-3 rounded-xl border border-border text-sm font-body font-medium">Retake</button>
+                <button onClick={() => { setHasPhoto(false); setPhotoSource(null); }} className="flex-1 py-3 rounded-xl border border-border text-sm font-body font-medium">Change</button>
                 <button onClick={() => setStep('details')} className="flex-1 py-3 rounded-xl bg-primary text-primary-foreground text-sm font-body font-medium">Use Photo</button>
               </div>
             </>

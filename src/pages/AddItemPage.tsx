@@ -12,6 +12,8 @@ const AddItemPage = () => {
   const [step, setStep] = useState<'photo' | 'details' | 'done'>('photo');
   const [photoColor] = useState(() => commonColors[Math.floor(Math.random() * commonColors.length)].hex);
   const [hasPhoto, setHasPhoto] = useState(false);
+  const [photoSource, setPhotoSource] = useState<'camera' | 'gallery' | 'screenshot' | 'url' | null>(null);
+  const [imageUrl, setImageUrl] = useState('');
 
   const [name, setName] = useState('');
   const [category, setCategory] = useState('');

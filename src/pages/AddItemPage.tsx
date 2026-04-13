@@ -204,7 +204,4 @@ const AddItemPage = () => {
   );
 };
 
-// Need to import ArrowLeft
-import { ArrowLeft } from 'lucide-react';
-
 export default AddItemPage;

@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { X, Camera, Image, Zap, Check, ArrowLeft } from 'lucide-react';
+import { X, Camera, Image, Zap, Check, ArrowLeft, Link, Clipboard } from 'lucide-react';
 import { QRCodeSVG } from 'qrcode.react';
 import { useApp } from '@/context/AppContext';
 import { categories, subcategories, seasons, occasionsList, commonColors } from '@/data/mockData';

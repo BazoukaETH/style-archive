@@ -1,5 +1,5 @@
 import { useNavigate } from 'react-router-dom';
-import { Bell, Plus, Sparkles, Users } from 'lucide-react';
+import { Bell, Plus, Sparkles, Users, Gift, Crown, Ticket, ArrowRight } from 'lucide-react';
 import { useApp } from '@/context/AppContext';
 import { PageTransition } from '@/components/PageTransition';
 import ItemPhoto from '@/components/ItemPhoto';

@@ -96,6 +96,55 @@ const HomePage = () => {
           </div>
         </div>
 
+        {/* Perks & Privileges */}
+        <div className="mb-6">
+          <div className="flex items-center justify-between mb-3">
+            <h2 className="font-heading text-lg font-medium">Perks & Privileges</h2>
+            <button className="text-xs text-muted-foreground">View all</button>
+          </div>
+          <div className="flex gap-3 overflow-x-auto pb-2 -mx-5 px-5 scrollbar-hide">
+            <div className="flex-shrink-0 w-64 bg-card rounded-2xl p-4 card-shadow">
+              <div className="flex items-center gap-2 mb-2">
+                <div className="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center">
+                  <Gift size={16} strokeWidth={1.5} className="text-primary" />
+                </div>
+                <span className="label-caps text-primary">Exclusive</span>
+              </div>
+              <p className="font-body text-sm font-medium mb-1">15% off at NET-A-PORTER</p>
+              <p className="text-xs text-muted-foreground mb-3">Valid on full-price items. Curated for your style profile.</p>
+              <button className="flex items-center gap-1 text-xs text-primary font-body font-medium">
+                Claim Code <ArrowRight size={12} strokeWidth={1.5} />
+              </button>
+            </div>
+            <div className="flex-shrink-0 w-64 bg-card rounded-2xl p-4 card-shadow">
+              <div className="flex items-center gap-2 mb-2">
+                <div className="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center">
+                  <Crown size={16} strokeWidth={1.5} className="text-primary" />
+                </div>
+                <span className="label-caps text-primary">VIP</span>
+              </div>
+              <p className="font-body text-sm font-medium mb-1">Private Sale — Mytheresa</p>
+              <p className="text-xs text-muted-foreground mb-3">Early access to Spring/Summer sale. 48hrs before public.</p>
+              <button className="flex items-center gap-1 text-xs text-primary font-body font-medium">
+                Access Now <ArrowRight size={12} strokeWidth={1.5} />
+              </button>
+            </div>
+            <div className="flex-shrink-0 w-64 bg-card rounded-2xl p-4 card-shadow">
+              <div className="flex items-center gap-2 mb-2">
+                <div className="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center">
+                  <Ticket size={16} strokeWidth={1.5} className="text-primary" />
+                </div>
+                <span className="label-caps text-primary">Concierge</span>
+              </div>
+              <p className="font-body text-sm font-medium mb-1">Fashion Week Afterparty</p>
+              <p className="text-xs text-muted-foreground mb-3">Request your invite to exclusive fashion events in your city.</p>
+              <button className="flex items-center gap-1 text-xs text-primary font-body font-medium">
+                Request Invite <ArrowRight size={12} strokeWidth={1.5} />
+              </button>
+            </div>
+          </div>
+        </div>
+
         {/* Quick Actions */}
         <div className="grid grid-cols-3 gap-3">
           {[
